@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Register</title>
+<link
+	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+<script
+	src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+<link rel="stylesheet" th:href="@{/CSS/login.css}">
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6 col-md-4 col-md-offset-4">
+				<div class="account-wall">
+					<h1 class="text-center">
+						<strong>Welcome!</strong>
+					</h1>
+					<form class="form-signin" th:action="@{/signupTask}" method="post"
+						th:object="${signupUser}">
+
+						<input type="text" class="form-control is-invalid"
+							placeholder="First Name" name="firstname"
+							th:value="${signupUser.firstname}" autofocus>
+						<div th:each="e : ${#fields.errors('firstname')}" th:text="${e}"
+							style="color: red;"></div>
+
+
+						<input type="text" class="form-control" placeholder="Last Name"
+							name="lastname" th:value="${signupUser.lastname}" autofocus>
+						<p th:each="e : ${#fields.errors('lastname')}" th:text="${e}"
+							style="color: red;"></p>
+
+
+						<input type="text" class="form-control" placeholder="Username"
+							name="username" th:value="${signupUser.username}" autofocus>
+						<p th:each="e : ${#fields.errors('username')}" th:text="${e}"
+							style="color: red;"></p>
+
+
+						<input type="password" class="form-control" placeholder="Password"
+							name="password" th:value="${signupUser.password}" autofocus>
+						<p th:each="e : ${#fields.errors('password')}" th:text="${e}"
+							style="color: red;"></p>
+
+
+						<span style="color: red;" th:text="${signupError}"></span>
+
+
+						<button class="btn btn-lg btn-primary btn-block" type="submit">Sign
+							up</button>
+					</form>
+				</div>
+				<a href="login" class="text-center new-account">Back to Login </a>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,47 @@
+.ticket-wall {
+	margin-top: 7px;
+	border: 1px solid #c0c0c0;
+	height: 430px;
+	width: 90%;
+	background-color: white;
+	border-radius: 12px;
+	box-shadow: 3px 2px 12px rgb(146, 146, 146);
+}
+
+.col-ticket-list {
+	background-color: rgb(247, 251, 252);
+	border: 1px solid #d9e4ff;
+	height: 350px;
+	width: 40%;
+	margin: 7px;
+}
+
+.first-row-label {
+	margin-top: 10px;
+	margin-left: 0px;
+}
+
+.dropdown{
+	margin : 20px;
+}
+.scrollbar{
+                
+                overflow-x: hidden;
+                overflow-y: auto;
+                text-align:justify;
+} 
+
+.ticket-name{
+	font-family: sans-serif;
+	cursor: pointer;
+}
+
+
+.guide-label{
+	margin-top: 120px;
+	text-align: left;
+	margin-left: 120px;
+	font-family: sans-serif;
+	color: #bfbfbf;
+	font-size: larger;
+}

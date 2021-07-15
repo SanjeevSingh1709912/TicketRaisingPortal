@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Raise Ticket</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet" th:href="@{/CSS/home.css}">
+<link rel="stylesheet" th:href="@{/CSS/raiseTicket.css}">
+<script th:src="@{/JS/home.js}"></script>
+</head>
+<body style="background-color: rgb(247, 251, 252);">
+	<div th:include="home::static-content"></div>
+	<div class="ticket-wall container ">
+		<div class="row first-row-label">
+			<div>
+				<h5>You can raise a ticket for the following categories:</h5>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col col-ticket-list scrollbar">
+				
+				<div class="dropdown dropright">
+					<a class=" dropdown-toggle" id="dropdownMenuButton"
+						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<b class="ticket-name">Admin</b>
+					</a>
+					<div class="dropdown-menu" role="menu">
+						<a class="dropdown-item"
+							href="/ticket?ticketName=Admin >> Mugs and Stationary"> Mugs
+							and Stationary </a> <a class="dropdown-item"
+							href="/ticket?ticketName=Admin >> Medicines and Wellness Room">Medicines
+							and Wellness Room</a> <a class="dropdown-item"
+							href="/ticket?ticketName=Admin >> Housekeeping">Housekeeping</a>
+						<a class="dropdown-item"
+							href="/ticket?ticketName=Admin >> Drawer, Lock and key">Drawer,
+							Lock and key</a> <a class="dropdown-item"
+							href="/ticket?ticketName=Admin >> Other Admin Issues">Other
+							Admin Issues</a>
+					</div>
+				</div>
+
+				<div class="dropdown dropright">
+					<a class=" dropdown-toggle" id="dropdownMenuButton"
+						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<b class="ticket-name">IT</b>
+					</a>
+					<div class="dropdown-menu">
+						<a class="dropdown-item" href="/login">Software
+							Troubleshooting</a> <a class="dropdown-item" href="#">Data
+							Synchronize</a> <a class="dropdown-item" href="#">Hardware</a> <a
+							class="dropdown-item" href="/ticket?ticketName=IT >> Operating System">Operating System</a> <a
+							class="dropdown-item" href="/ticket?ticketName=IT >> Outlook">Outlook</a> <a
+							class="dropdown-item" href="/ticket?ticketName=IT >> Permission Issues">Permission Issues</a> <a
+							class="dropdown-item" href="/ticket?ticketName=IT >> Printer">Printer</a> <a
+							class="dropdown-item" href="/ticket?ticketName=IT >> Anti-virus">Anti-virus</a> <a
+							class="dropdown-item" href="/ticket?ticketName=IT >> Other IT Issues">Other IT Issues</a>
+					</div>
+				</div>
+
+				<div class="dropdown dropright">
+					<a class=" dropdown-toggle" id="dropdownMenuButton"
+						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<b class="ticket-name">Network And Sever</b>
+					</a>
+					<div class="dropdown-menu">
+						<a class="dropdown-item" href="/ticket?ticketName=Network And Server >> Network">Network</a> <a
+							class="dropdown-item" href="/ticket?ticketName=Network And Server >> OS">OS</a> <a class="dropdown-item"
+							href="/ticket?ticketName=Network And Server >> Virus and Scanning">Virus and Scanning</a> <a class="dropdown-item" href="#">Server
+							Access</a> <a class="dropdown-item" href="/ticket?ticketName=Network And Server >> Restart Machine">Restart Machine</a> <a
+							class="dropdown-item" href="/ticket?ticketName=Network And Server >> Other Server Issues">Other Server Issues</a>
+					</div>
+				</div>
+
+				<div class="dropdown dropright">
+					<a class=" dropdown-toggle" id="dropdownMenuButton"
+						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<b class="ticket-name">Expense Settlement</b>
+					</a>
+					<div class="dropdown-menu">
+						<a class="dropdown-item" href="/ticket?ticketName=Expense Settlement >> Travel Settlement">Travel Settlement</a> <a
+							class="dropdown-item" href="/ticket?ticketName=Expense Settlement >> Other Reimbursements">Other Reimbursements</a>
+					</div>
+				</div>
+
+				<div class="dropdown dropright">
+					<a class=" dropdown-toggle" id="dropdownMenuButton"
+						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<b class="ticket-name">Internal Application</b>
+					</a>
+					<div class="dropdown-menu">
+						<a class="dropdown-item" href="/ticket?ticketName=Internal Application >> OneERP">OneERP</a> <a
+							class="dropdown-item" href="/ticket?ticketName=Internal Application >> JIRA">JIRA</a> <a class="dropdown-item"
+							href="#">Others</a>
+					</div>
+				</div>
+
+				<div class="dropdown dropright">
+					<a class=" dropdown-toggle" id="dropdownMenuButton"
+						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<b class="ticket-name">Group Insurance</b>
+					</a>
+					<div class="dropdown-menu">
+						<a class="dropdown-item" href="/ticket?ticketName=Group Insurance >> Group Personal Accident Insurance">Group Personal Accident
+							Insurance</a> <a class="dropdown-item" href="/ticket?ticketName=Group Insurance >> Group Mediclaim Insurance">Group Mediclaim
+							Insurance</a> <a class="dropdown-item" href="/ticket?ticketName=Group Insurance >> Group Term Life Insurance">Group Term Life
+							Insurance</a>
+					</div>
+				</div>
+
+				<div class="dropdown dropright">
+					<a class=" dropdown-toggle" id="dropdownMenuButton"
+						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<b class="ticket-name">Leave Management</b>
+					</a>
+					<div class="dropdown-menu">
+						<a class="dropdown-item" href="/ticket?ticketName=Leave Management >> Flexible Holiday">Flexible Holiday</a> <a
+							class="dropdown-item" href="/ticket?ticketName=Leave Management >> Swapping and Comp off">Swapping and Comp off</a> <a
+							class="dropdown-item" href="/ticket?ticketName=Leave Management >> Technical Issues">Technical issues</a> <a
+							class="dropdown-item" href="/ticket?ticketName=Leave Management >> Other Issues">Other Issues</a>
+					</div>
+				</div>
+
+				<div class="dropdown dropright">
+					<a class=" dropdown-toggle" id="dropdownMenuButton"
+						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<b class="ticket-name">Service Requests</b>
+					</a>
+					<div class="dropdown-menu">
+						<a class="dropdown-item" href="/ticket?ticketName=Service Requests >> VPN Access">VPN Access</a> <a
+							class="dropdown-item" href="/ticket?ticketName=Service Requests >> Data Transfer">Data Transfer</a> <a
+							class="dropdown-item" href="/ticket?ticketName=Service Requests >> SVN Backup/Restore">SVN Backup/Restore</a> <a
+							class="dropdown-item" href="/ticket?ticketName=Service Requests >> L2L VPN Tunnel">L2L VPN Tunnel</a> <a
+							class="dropdown-item" href="/ticket?ticketName=Service Requests >> Admin Right Access">Admin Right Access</a>
+					</div>
+				</div>
+
+				<div class="dropdown dropright">
+					<a class=" dropdown-toggle" id="dropdownMenuButton"
+						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<b class="ticket-name">Transport</b>
+					</a>
+					<div class="dropdown-menu">
+						<a class="dropdown-item" href="/ticket?ticketName=Transport >> Registration">Registration</a> <a
+							class="dropdown-item" href="/ticket?ticketName=Transport >> De-registration">De-registration</a> <a
+							class="dropdown-item" href="/ticket?ticketName=Transport >> Others">Others</a>
+					</div>
+				</div>
+
+				<div class="dropdown dropright">
+					<a class=" dropdown-toggle" id="dropdownMenuButton"
+						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<b class="ticket-name">TAP</b>
+					</a>
+					<div class="dropdown-menu">
+						<a class="dropdown-item" href="/ticket?ticketName=TAP >> Help on Existing Allocation">Help on Existing Allocation</a>
+						<a class="dropdown-item" href="/ticket?ticketName=TAP >> Request for Reports">Request for Reports</a> <a
+							class="dropdown-item" href="/ticket?ticketName=TAP >> Demand Fulfillment status">Demand Fulfillment Status</a> <a
+							class="dropdown-item" href="/ticket?ticketName=TAP >> TAP Dashboards">TAP Dashboards</a> <a
+							class="dropdown-item" href="/ticket?ticketName=TAP >> Others">Others</a>
+					</div>
+				</div>
+
+				<div class="dropdown dropright">
+					<a class=" dropdown-toggle" id="dropdownMenuButton"
+						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<b class="ticket-name">Skills</b>
+					</a>
+					<div class="dropdown-menu">
+						<a class="dropdown-item" href="/ticket?ticketName=Skills >> New Skills Addition">New Skills Addition</a> <a
+							class="dropdown-item" href="/ticket?ticketName=Skills >> Query on a skills">Query on a Skills</a> <a
+							class="dropdown-item" href="/ticket?ticketName=Skills >> Others">Others</a>
+					</div>
+				</div>
+
+				<div class="dropdown dropright">
+					<a class=" dropdown-toggle" id="dropdownMenuButton"
+						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<b class="ticket-name">Caring Cheer Board</b>
+					</a>
+					<div class="dropdown-menu">
+						<a class="dropdown-item" href="/ticket?ticketName=Caring Cheer Board >> Individual Nominations">Individual Nominations</a> <a
+							class="dropdown-item" href="/ticket?ticketName=Caring Cheer Board >> Team Nominations">Team Nominations</a>
+					</div>
+				</div>
+
+				<div class="dropdown dropright">
+					<a class=" dropdown-toggle" id="dropdownMenuButton"
+						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<b class="ticket-name">Bio-metric Access</b>
+					</a>
+					<div class="dropdown-menu">
+						<a class="dropdown-item" href="/ticket?ticketName=Bio-metric Access >> Provide Access">Provide Access</a> <a
+							class="dropdown-item" href="/ticket?ticketName=Bio-metric Access >> Revoke Access">Revoke Access</a> <a
+							class="dropdown-item" href="/ticket?ticketName=Bio-metric Access >> Others">Others</a>
+					</div>
+				</div>
+
+				<div class="dropdown dropright">
+					<a class=" dropdown-toggle" id="dropdownMenuButton"
+						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<b class="ticket-name">InsPIRE Process And Quality</b>
+					</a>
+					<div class="dropdown-menu">
+						<a class="dropdown-item" href="/ticket?ticketName=InsPIRE Process And Quality >> Process Creation">Process Creation</a> <a
+							class="dropdown-item" href="/ticket?ticketName=InsPIRE Process And Quality >> Process Update">Process Update</a> <a
+							class="dropdown-item" href="/ticket?ticketName=InsPIRE Process And Quality >> Process Artefacts Request">Process Artefacts Request</a> <a
+							class="dropdown-item" href="/ticket?ticketName=InsPIRE Process And Quality >> Delivery Audit">Delivery Audit</a> <a
+							class="dropdown-item" href="/ticket?ticketName=InsPIRE Process And Quality >> Support Audit">Support Audit</a> <a
+							class="dropdown-item" href="/ticket?ticketName=InsPIRE Process And Quality >> Information Security Audit">Information Security Audit</a> <a
+							class="dropdown-item" href="/ticket?ticketName=InsPIRE Process And Quality >> Certification Requests">Certification Requests</a> <a
+							class="dropdown-item" href="/ticket?ticketName=InsPIRE Process And Quality >> RFP Response">RFP Response</a> <a
+							class="dropdown-item" href="/ticket?ticketName=InsPIRE Process And Quality >> Process Training And Facilitation">Process Training And
+							Facilitation</a>
+					</div>
+				</div>
+
+				<div class="dropdown dropright">
+					<a class=" dropdown-toggle" id="dropdownMenuButton"
+						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<b class="ticket-name">Office 365</b>
+					</a>
+					<div class="dropdown-menu">
+						<a class="dropdown-item" href="/ticket?ticketName=Office 365 >> Creation of DL">Creation of DL</a> <a
+							class="dropdown-item" href="/ticket?ticketName=Office 365 >> Modification of DL/Shared Mailbox">Modification of DL/Shared
+							Mailbox</a> <a class="dropdown-item" href="/ticket?ticketName=Office 365 >> Creation of Shared Mailbox">Creation of Shared
+							Mailbox</a> <a class="dropdown-item" href="/ticket?ticketName=Office 365 >> Designation Update">Designation Update</a>
+						<a class="dropdown-item" href="/ticket?ticketName=Office 365 >> Contact number update">Contact number update</a> <a
+							class="dropdown-item" href="/ticket?ticketName=Office 365 >> Reset Password">Reset password</a> <a
+							class="dropdown-item" href="/ticket?ticketName=Office 365 >> Location Update">Location update</a> <a
+							class="dropdown-item" href="/ticket?ticketName=Office 365 >> Signature Title Update">Signature title update</a> <a
+							class="dropdown-item" href="/ticket?ticketName=Office 365 >> Step-up licence assignment">Step-up licence assignment</a> <a
+							class="dropdown-item" href="/ticket?ticketName=Office 365 >> Other Requests">Other Requests</a>
+					</div>
+				</div>
+
+				<div class="dropdown dropright">
+					<a class=" dropdown-toggle" id="dropdownMenuButton"
+						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<b class="ticket-name">Campus Store</b>
+					</a>
+					<div class="dropdown-menu">
+						<a class="dropdown-item" href="/ticket?ticketName=Campus Store >> New Order">New Order</a> <a
+							class="dropdown-item" href="/ticket?ticketName=Campus Store >> Replace Order">Replace Order</a> <a
+							class="dropdown-item" href="/ticket?ticketName=Campus Store >> Query">Query</a>
+					</div>
+				</div>
+
+				<div class="dropdown dropright">
+					<a class=" dropdown-toggle" id="dropdownMenuButton"
+						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<b class="ticket-name">NAGP</b>
+					</a>
+					<div class="dropdown-menu">
+						<a class="dropdown-item" href="/ticket?ticketName=NAGP >> NAGP Enrollment">NAGP Enrollment</a> <a
+							class="dropdown-item" href="/ticket?ticketName=NAGP >> Code Review">Code Review</a> <a
+							class="dropdown-item" href="/ticket?ticketName=NAGP >> Other Issues">Other Issues</a>
+					</div>
+				</div>
+
+				<div class="dropdown dropright">
+					<a class=" dropdown-toggle" id="dropdownMenuButton"
+						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<b class="ticket-name">Software Request</b>
+					</a>
+					<div class="dropdown-menu">
+						<a class="dropdown-item" href="/ticket?ticketName=Software Request >> Request for MS Project">Request for MS Project</a> <a
+							class="dropdown-item" href="/ticket?ticketName=Software Request >> Request for MS Visio">Request for MS Visio</a> <a
+							class="dropdown-item" href="/ticket?ticketName=Software Request >> Request for VS professional">Request for VS professional</a> <a
+							class="dropdown-item" href="/ticket?ticketName=Software Request >> Request for other software">Request for other software</a>
+					</div>
+				</div>
+			</div>
+			
+			
+			
+			<div class="col col-ticket-desc">
+				<div th:if="${editTicketId} == 0">
+					<div class="guide-label" th:if="${ticketName.length} == 0">
+						1. Select the ticket you want to raise. <br> 2. Add some
+						description. <br> 3. Press "Raise" button.
+					</div>
+				</div>
+				
+
+				<div th:if="${editTicketId} == 0">
+					<div th:if="${ticketName.length} != 0">
+						<form action="raiseTicketTask" method="post">
+							<b class="ticket-name">Ticket Name :</b> <input type="text"
+								name="ticketName" class="form-control" th:value="${ticketName}"
+								readonly="readonly"> <br> <b class="ticket-name">Description
+								:</b> <br>
+							<textarea rows="7" cols="" class="form-control"
+								name="description" style="margin-bottom: 25px; resize: none;"
+								autofocus="autofocus" required="required"></textarea>
+							<button class="btn btn-warning" type="submit">Raise</button>
+							<a href="/home" class="btn btn-danger">Cancel</a>
+						</form>
+					</div>
+				</div>
+
+
+				<div th:if="${editTicketId} != 0">
+					<form action="editTicketTask" method="post">
+						<b class="ticket-name">Ticket Id :</b> <input type="text"
+							name="id" class="form-control" th:value="${editTicketId}"
+							readonly="readonly"> <br> <b class="ticket-name">Ticket
+							Name :</b> <input type="text" name="ticketName" class="form-control"
+							th:value="${editTicket.ticketName} != null ? ${editTicket.ticketName} : ${ticketName}"
+							readonly="readonly"> <br> <b class="ticket-name">Description
+							:</b> <br>
+						<textarea rows="3" cols="" class="form-control" name="description"
+							style="margin-bottom: 25px; resize: none;"
+							th:text="${editTicket.description}" autofocus="autofocus"
+							required="required"></textarea>
+						<button class="btn btn-warning" type="submit">Update</button>
+						<a href="/home" class="btn btn-danger">Cancel</a>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

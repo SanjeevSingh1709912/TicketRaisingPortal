@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Home</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" th:href="@{/CSS/home.css}">
+  <script th:src="@{/JS/home.js}"></script>
+  
+</head>
+<body style="background-color: rgb(247, 251, 252);">
+
+<div th:fragment="static-content" >
+<nav class="navbar navbar-expand-lg  bg-dark navbar-dark fixed-top scrolling-navbar">
+  <!-- Brand/logo -->
+  <a class="navbar-brand nav-link header-font"  > 
+    <!-- <img src="../../assets/images/logomain.png" alt="logo" style="height: 35px; width: 100px;"> -->
+    <strong style="margin-left: 10px;">Ticket Management</strong>
+  </a>
+  
+  <!-- Links -->
+  <ul class="navbar-nav " >
+
+    
+      <li class="nav-itemA" >
+        <p>   <h6 class="header-font"> Hey! <span th:text="${loggedInUser.firstname}"></span></h6>  </p>
+      </li>
+      <li class="nav-itemB" >
+           <a href="/login" class="btn btn-warning">Logout</a>
+      </li>
+
+
+  </ul>
+</nav>
+
+  <div id="mySidebar" class="sidebar">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+    <a href="/ticket" onclick="closeNav()" id="my-ticket-label">Raise a Ticket</a>
+     <div>
+     <a href="/home" class="nav-link" id="my-ticket-label" >MyTickets</a>   
+     </div>
+  </div>
+
+  <div id="main" class="row">
+    <button  id="side-btn" class="openbtn" onclick="openNav()">☰</button>
+  </div>  
+  
+  </div>   
+  
+  <div th:if="${loggedInUser.tickets.size} == 0" class="welcome-label" >
+  
+  <h1>Welcome!! <span th:text="${loggedInUser.firstname}"></span></h1> <br>
+  <h3>You can raise tickets here!</h3>
+  <br> <a href="/ticket" class="btn btn-warning"><b>Raise a Ticket</b></a>
+  </div> 
+
+<div  th:unless="${loggedInUser.tickets.size} == 0" style="text-align: center;">
+	<h3 class="ticket-label">Your Raised Tickets</h3>
+</div>
+    <div class="container ticket-class" th:each="ticket : ${loggedInUser.tickets}">
+      <div class="row first-row">
+        <div class="col-sm frt">
+          <i>Raised On : <span th:text="${ticket.date}"></span> </i>  
+        </div>
+     
+        <div class="col-sm frt">
+         <i> Raised By : <span th:text="${loggedInUser.username}"></span> </i>
+        </div>
+        <div class="col-sm frt id-class">
+          <i>Ticket Id : <span th:text="${ticket.id}"></span> </i>
+        </div>
+
+      </div>
+      <div class="row middle-row">
+        <div class="col desc-col">
+         <span class="desc-class" th:text="${ticket.description}"></span>
+        </div>
+        <div class="col edit-button">
+          <a th:href="@{'/edit?ticketId='+ ${ticket.id}}" class="btn btn-warning btn-resolve"> <b>EDIT</b></a>
+          <a th:href="@{'/ticketDeleteTask?id='+ ${ticket.id}}" class="btn btn-warning btn-resolve"> <b>Delete</b> </a>
+        </div>
+  
+      </div>
+
+      <div class="row last-row">
+        <div class="col-sm ">
+        <span class="frt2"> Category :</span> <span th:text="${ticket.ticketName}"></span>
+        </div>
+        <div class="col-sm view-class">
+          <a href="#" style="color: rgb(12, 97, 126);">View Details</a>
+        </div>
+        
+      </div>
+    </div>
+    
+
+</body>
+</html>
